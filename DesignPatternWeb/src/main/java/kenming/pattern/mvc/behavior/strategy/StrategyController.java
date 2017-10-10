@@ -1,7 +1,5 @@
 package kenming.pattern.mvc.behavior.strategy;
 
-import java.util.*;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
