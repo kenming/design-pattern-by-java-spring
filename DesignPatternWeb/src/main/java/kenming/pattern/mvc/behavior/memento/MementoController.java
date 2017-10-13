@@ -53,8 +53,6 @@ public class MementoController {
     @RequestMapping(value="lottoForm", params="restoreLotto", method = RequestMethod.POST)
     public ModelAndView restoreLotto(@ModelAttribute("lottoModel")複合彩DTO lottoModel, Model model) { 
     	ModelAndView map = new ModelAndView("behavior/memento/LottoForm"); 
-    	//lottoModel.set彩券號碼(88);
-    	//lottoModel.set成語字謎("明珠彈雀");
     	lottoModel = control.還原選號();
 		map.addObject("lottoModel", lottoModel);
 

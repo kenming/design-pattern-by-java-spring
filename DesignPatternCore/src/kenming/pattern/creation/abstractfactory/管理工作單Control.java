@@ -37,7 +37,7 @@ public class 管理工作單Control
     /// </summary>
     public void AddWorkItem(WorkItemDTO wkdto)
     {
-        wkdto.ID = Integer.toString(workitemList.size() + 1);       // Set the WorkItem ID
+        wkdto.setID(Integer.toString(workitemList.size() + 1));       // Set the WorkItem ID
         workitemList.add(wkdto);    	                            // Add the WorkItem DTO to the List
     }
 
@@ -64,30 +64,30 @@ public class 管理工作單Control
     	// with_java8_lambda
         Optional<WorkItemDTO> dto = workitemList
                 .stream()
-                .filter(x -> x.ID == WorkItemID)
+                .filter(x -> x.getID().equals(WorkItemID))
                 .findFirst();
         
         WorkItem wkItem = new WorkItem();
-        wkItem.ID = dto.get().ID;
-        wkItem.item_title = dto.get().item_title;
+        wkItem.setID(dto.get().getID());
+        wkItem.setItemTitle(dto.get().getItemTitle());
 
-        switch (dto.get().assign_type)
+        switch (dto.get().getAssignType())
         {
             case ORGANIZATION:
-                wkItem.assignee = factory.CreateOrganizationParticipant();
-                wkItem.assignee.assignType = AssigneeType.ORGANIZATION;
+                wkItem.setAssignee(factory.CreateOrganizationParticipant());
+                wkItem.getAssignee().assignType = AssigneeType.ORGANIZATION;
                 break;
             case ROLE:
-                wkItem.assignee = factory.CreateRoleParticipant();
-                wkItem.assignee.assignType = AssigneeType.ROLE;
+                wkItem.setAssignee(factory.CreateRoleParticipant());
+                wkItem.getAssignee().assignType = AssigneeType.ROLE;
                 break;
             case HUMAN:
-                wkItem.assignee = factory.CreateHumanParticipant();
-                wkItem.assignee.assignType = AssigneeType.HUMAN;
+                wkItem.setAssignee(factory.CreateHumanParticipant());
+                wkItem.getAssignee().assignType = AssigneeType.HUMAN;
                 break;
         }
-        wkItem.assignee.aggignee_name = dto.get().assignee_name;
+        wkItem.getAssignee().aggignee_name = dto.get().getAssigneeName();
 
-        return wkItem.assignee.process();
+        return wkItem.getAssignee().process();
     }
 }

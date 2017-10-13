@@ -8,9 +8,9 @@ import kenming.pattern.creation.abstractfactory.participant.*;
 /// </summary>
 public class WorkItem
 {
-  public String ID;
-  public String item_title;
-  public Participant assignee;
+  private String ID;
+  private String itemTitle;
+  private Participant assignee;
   
   // Getter & Setter properties
 	public String getID() {
@@ -19,11 +19,11 @@ public class WorkItem
 	public void setID(String iD) {
 		ID = iD;
 	}
-	public String getItem_title() {
-		return item_title;
+	public String getItemTitle() {
+		return itemTitle;
 	}
-	public void setItem_title(String item_title) {
-		this.item_title = item_title;
+	public void setItemTitle(String item_title) {
+		this.itemTitle = item_title;
 	}	
 	public Participant getAssignee() {
 		return assignee;
